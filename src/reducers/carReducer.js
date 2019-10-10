@@ -33,8 +33,8 @@ export const reducer = (state = initialState, action) => {
                     price: state.car.price + action.payload.price,
                     features: [...state.car.features, action.payload]
                 },
-                store: state.store.filter(item => {
-                    return item.id !== action.payload.id;
+                store: state.store.filter(feature => {
+                    return feature.id !== action.payload.id;
                 })
             };
         case REMOVE_ITEM:
@@ -44,11 +44,10 @@ export const reducer = (state = initialState, action) => {
                 car: {
                     ...state.car,
                     price: state.car.price - action.payload.price,
-                    features: [...state.car.features, action.payload]
-                },
-                store: state.store.filter(item => {
-                    return item.id !== action.payload.id;
-                })
+                    features: state.car.features.filter(feature => 
+                        feature.id !== action.payload.id
+                )},
+                store: [...state.store, action.payload]
             };
         default:
             return state;

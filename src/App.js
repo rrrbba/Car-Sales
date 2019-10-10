@@ -7,42 +7,44 @@ import Total from './components/Total';
 import { addItem, removeItem } from './actions';
 
 
-const App = ({ addItem, removeItem, state }) => {
+const App = props => {
   
 
-  const removeFeature = item => {
-    // dispatch an action here to remove an item
-    removeItem(item)
-  };
+  // const removeFeature = item => {
+  //   // dispatch an action here to remove an item
+  //   removeItem(item)
+  // };
 
-  const buyItem = item => {
-    // dipsatch an action here to add an item
-    addItem(item)
-  };
+  // const buyItem = item => {
+  //   // dipsatch an action here to add an item
+  //   addItem(item)
+  // };
 
   return (
     <div className="boxes">
       <div className="box">
-        <Header car={state.car} />
-        <AddedFeatures car={state.car} />
+        <Header  /> 
+        <AddedFeatures />
       </div>
       <div className="box">
-        <AdditionalFeatures store={state.store} />
-        <Total car={state.car} additionalPrice={state.additionalPrice} />
+        <AdditionalFeatures  />
+        <Total  />
       </div>
     </div>
   );
 };
 
-const mapStateToProps = state => {
-  return{
-    state: state
-  }
-}
+// const mapStateToProps = state => {
+//   return{
+//     car: state.car,
+//     additionalFeatures: state.additionalFeatures,
+//     additionaPrice: state.additionaPrice
+//   }
+// }
 
-export default connect(
-  mapStateToProps,
-  { addItem, removeItem }
-)(App);
+// export default connect(
+//   mapStateToProps,
+//   { addItem, removeItem }
+// )(App);
 
-// export default App;
+export default App;
